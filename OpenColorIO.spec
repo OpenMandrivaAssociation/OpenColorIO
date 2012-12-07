@@ -81,6 +81,7 @@ rm -f ext/yaml*
 %ifnarch x86_64
 	-DOCIO_USE_SSE=OFF
 %endif
+
 PYTHONDONTWRITEBYTECODE= %make
 
 %install
