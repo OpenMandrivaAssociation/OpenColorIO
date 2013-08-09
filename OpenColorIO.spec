@@ -1,14 +1,14 @@
-%define		major		1
-%define		libname		%mklibname %{name} %{major}
-%define		develname	%mklibname %{name} -d
+%define	major	1
+%define	libname	%mklibname %{name} %{major}
+%define	devname	%mklibname %{name} -d
 
+Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
 Version:	1.0.7
 Release:	1
-Summary:	Enables color transforms and image display across graphics apps
 Group:		System/Libraries
 License:	BSD
-URL:		http://opencolorio.org/
+Url:		http://opencolorio.org/
 # Github archive was generated on the fly using the following URL:
 # https://github.com/imageworks/OpenColorIO/tarball/v1.0.7
 Source0:	imageworks-%{name}-v%{version}-0-g87da508.tar.gz
@@ -17,22 +17,22 @@ Patch0:		OpenColorIO-1.0.7-pylib_no_soname.patch
 # Exclude hidden files from being packaged.
 Patch1:		OpenColorIO-1.0.7-docfix.patch
 BuildRequires:	cmake
-BuildRequires:	python-devel
-BuildRequires:	zlib-devel
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(glut)
 BuildRequires:	pkgconfig(glew)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
+BuildRequires:	pkgconfig(zlib)
 
 #######################
 # Unbundled libraries #
 #######################
 BuildRequires:	tinyxml-devel
 BuildRequires:	pkgconfig(lcms2)
-BuildRequires:	yaml-cpp-devel >= 0.3.0
+BuildRequires:	pkgconfig(yaml-cpp)
 
 %description
 OCIO enables color transforms and image display to be handled in a consistent
@@ -47,14 +47,13 @@ Group:		System/Libraries
 %description -n %{libname}
 Enables color transforms and image display across graphics apps.
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/C++
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
 
-%description -n %{develname}
+%description -n %{devname}
 Development files for %{name} library.
 
 %prep
@@ -68,7 +67,8 @@ rm -f ext/tinyxml*
 rm -f ext/yaml*
 
 %build
-%cmake	-DCMAKE_SKIP_RPATH=TRUE \
+%cmake \
+	-DCMAKE_SKIP_RPATH=TRUE \
 	-DOCIO_BUILD_STATIC=OFF \
 	-DPYTHON_INCLUDE_LIB_PREFIX=OFF \
 	-DOCIO_BUILD_DOCS=ON \
@@ -94,9 +94,9 @@ PYTHONDONTWRITEBYTECODE= %make
 %{_datadir}/ocio
 
 %files -n %{libname}
-%{_libdir}/*.so.%{major}*
+%{_libdir}/libOpenColorIO.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
