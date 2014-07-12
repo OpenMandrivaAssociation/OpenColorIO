@@ -12,6 +12,7 @@ Url:		http://opencolorio.org/
 # Github archive was generated on the fly using the following URL:
 # https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
 Source0:        %{name}-%{version}.tar.gz
+#Patch0:		OpenColorIO-yaml_cpp3.patch
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
@@ -28,7 +29,7 @@ BuildRequires:	pkgconfig(zlib)
 #######################
 BuildRequires:	tinyxml-devel
 BuildRequires:	pkgconfig(lcms2)
-BuildRequires:	pkgconfig(yaml-cpp)
+BuildRequires:	yaml-cpp-0.3-devel
 
 %description
 OCIO enables color transforms and image display to be handled in a consistent
