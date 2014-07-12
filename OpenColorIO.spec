@@ -4,18 +4,14 @@
 
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
-Version:	1.0.7
-Release:	7
+Version:	1.0.9
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://opencolorio.org/
 # Github archive was generated on the fly using the following URL:
-# https://github.com/imageworks/OpenColorIO/tarball/v1.0.7
-Source0:	imageworks-%{name}-v%{version}-0-g87da508.tar.gz
-# Dot set soname for python modules.
-Patch0:		OpenColorIO-1.0.7-pylib_no_soname.patch
-# Exclude hidden files from being packaged.
-Patch1:		OpenColorIO-1.0.7-docfix.patch
+# https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
+Source0:        %{name}-%{version}.tar.gz
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
@@ -57,9 +53,8 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%setup -q -n imageworks-%{name}-b3cb224
-%patch0 -p1 -b .pylib
-%patch1 -p1 -b .docfix
+%setup -q
+%apply_patches
 
 # Remove what bundled libraries
 rm -f ext/lcms*
