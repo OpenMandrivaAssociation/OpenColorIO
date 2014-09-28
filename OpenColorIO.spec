@@ -19,6 +19,7 @@ Patch2:		opencolorio-1.0.9-py3.patch
 Patch3:		opencolorio-1.0.9-documentation-gen.patch
 Patch4:		opencolorio-1.0.9-remove-external-doc-utilities.patch
 
+BuildRequires:	boost-devel
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
