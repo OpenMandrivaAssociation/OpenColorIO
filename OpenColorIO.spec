@@ -21,6 +21,7 @@ Patch4:		opencolorio-1.0.9-remove-external-doc-utilities.patch
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake
+BuildRequires:	python-devel
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(glut)
