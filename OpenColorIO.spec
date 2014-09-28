@@ -12,7 +12,13 @@ Url:		http://opencolorio.org/
 # Github archive was generated on the fly using the following URL:
 # https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
 Source0:        %{name}-%{version}.tar.gz
-#Patch0:		OpenColorIO-yaml_cpp3.patch
+#from mageia
+Patch0:		opencolorio-1.0.9-git-Add-support-for-yaml-cpp-0.5.1.patch
+Patch1:		opencolorio-1.0.9-git-OCIOYaml-Fixed-dereference-of-temporary-with-yaml-cpp-0.5.x.patch
+Patch2:		opencolorio-1.0.9-py3.patch
+Patch3:		opencolorio-1.0.9-documentation-gen.patch
+Patch4:		opencolorio-1.0.9-remove-external-doc-utilities.patch
+
 BuildRequires:	cmake
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
@@ -23,13 +29,14 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	python-sphinx
 
 #######################
 # Unbundled libraries #
 #######################
 BuildRequires:	tinyxml-devel
 BuildRequires:	pkgconfig(lcms2)
-BuildRequires:	yaml-cpp-0.3-devel
+BuildRequires:	pkgconfig(yaml-cpp)
 
 %description
 OCIO enables color transforms and image display to be handled in a consistent
@@ -67,7 +74,7 @@ rm -f ext/yaml*
 	-DCMAKE_SKIP_RPATH=TRUE \
 	-DOCIO_BUILD_STATIC=OFF \
 	-DPYTHON_INCLUDE_LIB_PREFIX=OFF \
-	-DOCIO_BUILD_DOCS=ON \
+	-DOCIO_BUILD_DOCS=OFF \
 	-DOCIO_BUILD_TESTS=ON \
 	-DOCIO_LINK_PYGLUE=ON \
 	-DOCIO_PYGLUE_SONAME=OFF \
