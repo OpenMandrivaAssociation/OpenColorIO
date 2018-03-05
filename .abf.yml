@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   OpenColorIO-1.0.9.tar.gz: 45efcc24db8f8830b6892830839da085e19eeb6d
+sources:
+  OpenColorIO-1.1.0.tar.gz: e64260870706e30570f31921bab181d8acf84a51

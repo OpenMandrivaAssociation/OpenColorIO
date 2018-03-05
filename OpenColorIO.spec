@@ -4,8 +4,8 @@
 
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
-Version:	1.0.9
-Release:	7
+Version:	1.1.0
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://opencolorio.org/
@@ -13,11 +13,8 @@ Url:		http://opencolorio.org/
 # https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
 Source0:        %{name}-%{version}.tar.gz
 #from mageia
-Patch0:		opencolorio-1.0.9-git-Add-support-for-yaml-cpp-0.5.1.patch
-Patch1:		opencolorio-1.0.9-git-OCIOYaml-Fixed-dereference-of-temporary-with-yaml-cpp-0.5.x.patch
-Patch2:		opencolorio-1.0.9-py3.patch
-Patch3:		opencolorio-1.0.9-documentation-gen.patch
-Patch4:		opencolorio-1.0.9-remove-external-doc-utilities.patch
+#Patch3:		opencolorio-1.0.9-documentation-gen.patch
+#Patch4:		opencolorio-1.0.9-remove-external-doc-utilities.patch
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake
@@ -92,8 +89,13 @@ PYTHONDONTWRITEBYTECODE= %make
 %install
 %makeinstall_std -C build
 
+# Fix location of cmake files.
+mkdir -p %{buildroot}%{_datadir}/cmake/Modules
+find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modules/ \;
+
+
 %files
-%doc ChangeLog LICENSE README
+%doc ChangeLog LICENSE README.md
 %{_bindir}/*
 %{python_sitearch}/Py%{name}.so
 %{_datadir}/ocio
@@ -106,4 +108,5 @@ PYTHONDONTWRITEBYTECODE= %make
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
 %{_includedir}/Py%{name}
+%{_datadir}/cmake/Modules/*
 
