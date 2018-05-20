@@ -1,3 +1,4 @@
+%global optflags %{optflags} -Wno-error=unused-function -Wno-error=cast-function-type
 %define	major	1
 %define	libname	%mklibname %{name} %{major}
 %define	devname	%mklibname %{name} -d
@@ -12,12 +13,13 @@ Url:		http://opencolorio.org/
 # Github archive was generated on the fly using the following URL:
 # https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
 Source0:        %{name}-%{version}.tar.gz
+Patch0:		OpenColorIO-1.1.0-compile.patch
 #from mageia
 #Patch3:		opencolorio-1.0.9-documentation-gen.patch
 #Patch4:		opencolorio-1.0.9-remove-external-doc-utilities.patch
 
 BuildRequires:	boost-devel
-BuildRequires:	cmake
+BuildRequires:	cmake ninja
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
@@ -60,15 +62,17 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for %{name} library.
 
 %prep
-%setup -q
-%apply_patches
-
+%autosetup -p1
 # Remove what bundled libraries
 rm -f ext/lcms*
 rm -f ext/tinyxml*
 rm -f ext/yaml*
 
 %build
+
+export CC=gcc
+export CXX=g++
+
 %cmake \
 	-DCMAKE_SKIP_RPATH=TRUE \
 	-DOCIO_BUILD_STATIC=OFF \
@@ -81,13 +85,14 @@ rm -f ext/yaml*
 	-DUSE_EXTERNAL_TINYXML=TRUE \
 	-DUSE_EXTERNAL_LCMS=TRUE \
 %ifnarch x86_64
-	-DOCIO_USE_SSE=OFF
+	-DOCIO_USE_SSE=OFF \
 %endif
+	-G Ninja
 
-PYTHONDONTWRITEBYTECODE= %make
+PYTHONDONTWRITEBYTECODE= %ninja_build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 # Fix location of cmake files.
 mkdir -p %{buildroot}%{_datadir}/cmake/Modules
