@@ -6,7 +6,7 @@
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
 Version:	1.1.0
-Release:	4
+Release:	5
 Group:		System/Libraries
 License:	BSD
 Url:		http://opencolorio.org/
@@ -24,13 +24,16 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(glut)
-BuildRequires:	pkgconfig(glew)
-BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python-sphinx
+# FIXME this is a workaround for incompatibility with current glew and
+# glext.h -- should really be a BuildRequires, the BuildConflict works
+# around the problem by disabling some optional components.
+BuildConflicts:	pkgconfig(glew)
 
 #######################
 # Unbundled libraries #
