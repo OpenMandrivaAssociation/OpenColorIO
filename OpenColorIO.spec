@@ -1,18 +1,18 @@
-%global optflags %{optflags} -Wno-error=unused-function -Wno-error=cast-function-type
+%global optflags %{optflags} -Wno-error=unused-function
 %define	major	1
 %define	libname	%mklibname %{name} %{major}
 %define	devname	%mklibname %{name} -d
 
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
-Version:	1.1.0
-Release:	5
+Version:	1.1.1
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://opencolorio.org/
 # Github archive was generated on the fly using the following URL:
 # https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:		OpenColorIO-1.1.0-compile.patch
 #from mageia
 #Patch3:		opencolorio-1.0.9-documentation-gen.patch
@@ -72,10 +72,6 @@ rm -f ext/tinyxml*
 rm -f ext/yaml*
 
 %build
-
-export CC=gcc
-export CXX=g++
-
 %cmake \
 	-DCMAKE_SKIP_RPATH=TRUE \
 	-DOCIO_BUILD_STATIC=OFF \
@@ -87,7 +83,7 @@ export CXX=g++
 	-DUSE_EXTERNAL_YAML=TRUE \
 	-DUSE_EXTERNAL_TINYXML=TRUE \
 	-DUSE_EXTERNAL_LCMS=TRUE \
-%ifnarch x86_64
+%ifnarch %{x86_64}
 	-DOCIO_USE_SSE=OFF \
 %endif
 	-G Ninja
@@ -117,4 +113,3 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %{_includedir}/%{name}
 %{_includedir}/Py%{name}
 %{_datadir}/cmake/Modules/*
-
