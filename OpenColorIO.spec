@@ -13,7 +13,7 @@ Url:		http://opencolorio.org/
 # Github archive was generated on the fly using the following URL:
 # https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:		OpenColorIO-1.1.0-compile.patch
+#Patch0:		OpenColorIO-1.1.0-compile.patch
 #from mageia
 #Patch3:		opencolorio-1.0.9-documentation-gen.patch
 #Patch4:		opencolorio-1.0.9-remove-external-doc-utilities.patch
