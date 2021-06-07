@@ -20,7 +20,8 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(glut)
