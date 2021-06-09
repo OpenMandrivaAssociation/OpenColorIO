@@ -112,8 +112,8 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 #{_libdir}/libOpenColorIO.so.%{major}*
 
 %files -n %{devname}
-%{_libdir}/lib%{name}.so
+#{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
-%{_includedir}/Py%{name}
+#{_includedir}/Py%{name}
 %{_datadir}/cmake/Modules/*
