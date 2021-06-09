@@ -31,6 +31,9 @@ BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python-sphinx
+BuildRequires:	pkgconfig(OpenEXR)
+BuildRequires:	ilmbase-devel
+
 # FIXME this is a workaround for incompatibility with current glew and
 # glext.h -- should really be a BuildRequires, the BuildConflict works
 # around the problem by disabling some optional components.
