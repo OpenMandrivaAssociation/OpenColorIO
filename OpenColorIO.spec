@@ -109,7 +109,7 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %{_datadir}/ocio
 
 %files -n %{libname}
-%{_libdir}/libOpenColorIO.so.%{major}*
+#{_libdir}/libOpenColorIO.so.%{major}*
 
 %files -n %{devname}
 %{_libdir}/lib%{name}.so
