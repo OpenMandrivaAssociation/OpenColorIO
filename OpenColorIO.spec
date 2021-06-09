@@ -31,8 +31,6 @@ BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python-sphinx
-BuildRequires:	pkgconfig(OpenEXR)
-BuildRequires:	ilmbase-devel
 BuildRequires:	pkgconfig(IlmBase)
 
 # FIXME this is a workaround for incompatibility with current glew and
