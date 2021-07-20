@@ -1,0 +1,48 @@
+diff -Nrup a/src/libutils/oglapphelpers/CMakeLists.txt b/src/libutils/oglapphelpers/CMakeLists.txt
+--- a/src/libutils/oglapphelpers/CMakeLists.txt	2021-05-04 06:36:34.000000000 +0200
++++ b/src/libutils/oglapphelpers/CMakeLists.txt	2021-06-05 09:17:37.329763820 +0200
+@@ -82,12 +82,3 @@ if(${OCIO_EGL_HEADLESS})
+             ${OPENGL_EGL_INCLUDE_DIRS}
+     )
+ endif()
+-
+-install(TARGETS oglapphelpers 
+-    LIBRARY DESTINATION lib
+-    ARCHIVE DESTINATION lib
+-)
+-
+-install(FILES ${INCLUDES}
+-    DESTINATION include/OpenColorIO/oglapphelpers
+-)
+diff -Nrup a/src/libutils/oiiohelpers/CMakeLists.txt b/src/libutils/oiiohelpers/CMakeLists.txt
+--- a/src/libutils/oiiohelpers/CMakeLists.txt	2021-05-04 06:36:34.000000000 +0200
++++ b/src/libutils/oiiohelpers/CMakeLists.txt	2021-06-05 09:14:45.178385612 +0200
+@@ -34,12 +34,3 @@ target_link_libraries(oiiohelpers
+         IlmBase::Half
+         utils::strings
+ )
+-
+-install(TARGETS oiiohelpers
+-    LIBRARY DESTINATION lib
+-    ARCHIVE DESTINATION lib
+-)
+-
+-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/oiiohelpers.h
+-    DESTINATION include/OpenColorIO/oiiohelpers
+-)
+diff -Nrup a/src/OpenColorIO/CMakeLists.txt b/src/OpenColorIO/CMakeLists.txt
+--- a/src/OpenColorIO/CMakeLists.txt	2021-05-04 06:36:34.000000000 +0200
++++ b/src/OpenColorIO/CMakeLists.txt	2021-06-05 07:22:40.790707686 +0200
+@@ -278,8 +278,10 @@ if(MSVC AND BUILD_SHARED_LIBS)
+ 	install(FILES $<TARGET_PDB_FILE:${PROJECT_NAME}> DESTINATION bin OPTIONAL)
+ endif()
+ 
++include(GNUInstallDirs)
++
+ install(TARGETS OpenColorIO
+-	LIBRARY DESTINATION lib
++	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ 	RUNTIME DESTINATION bin
+-	ARCHIVE DESTINATION lib
++	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ )
