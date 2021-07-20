@@ -1,0 +1,16 @@
+diff --git a/src/OpenColorIO/Config.cpp b/src/OpenColorIO/Config.cpp
+index 3685413d..76e294f8 100644
+--- a/src/OpenColorIO/Config.cpp
++++ b/src/OpenColorIO/Config.cpp
+@@ -1139,11 +1139,6 @@ public:
+ };
+ 
+ 
+-
+-// Instantiate the cache with the right types.
+-template class ProcessorCache<std::size_t, ProcessorRcPtr>;
+-
+-
+ ///////////////////////////////////////////////////////////////////////////
+ 
+ ConfigRcPtr Config::Create()
