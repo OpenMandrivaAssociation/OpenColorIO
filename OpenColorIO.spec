@@ -15,7 +15,7 @@ Url:		http://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}/%{name}-%{version}.tar.gz
 #Patch0:		OpenColorIO-1.1.0-compile.patch
 #from mageia
-Patch0:		opencolorio-2.0.1-mga-fix-install.patch
+Patch0:		opencolorio-2.0.1-fix-install.patch
 Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
 
 BuildRequires:	boost-devel
