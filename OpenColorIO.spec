@@ -15,7 +15,7 @@ Url:		http://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}/%{name}-%{version}.tar.gz
 #Patch0:		OpenColorIO-1.1.0-compile.patch
 #from mageia
-Patch0:		opencolorio-2.0.1-fix-install.patch
+#Patch0:		opencolorio-2.0.1-fix-install.patch
 Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
 
 BuildRequires:	boost-devel
@@ -74,6 +74,11 @@ Development files for %{name} library.
 rm -f ext/lcms*
 rm -f ext/tinyxml*
 rm -f ext/yaml*
+rm -f ext/dist
+
+%ifarch x86_64 znver1 aarch64
+sed -i 's|DESTINATION lib|DESTINATION %_lib|' src/OpenColorIO/CMakeLists.txt
+%endif
 
 %build
 %cmake \
