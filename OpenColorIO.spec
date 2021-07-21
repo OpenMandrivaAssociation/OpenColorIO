@@ -21,6 +21,7 @@ Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
 BuildRequires:	git-core
+BuildRequires:	cmake(pybind11)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gl)
@@ -116,10 +117,10 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %{_datadir}/ocio
 
 %files -n %{libname}
-#{_libdir}/libOpenColorIO.so.%{major}*
+%{_libdir}/libOpenColorIO.so.%{major}*
 
 %files -n %{devname}
-#{_libdir}/lib%{name}.so
+%{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
 #{_includedir}/Py%{name}
