@@ -1,11 +1,11 @@
 %global optflags %{optflags} -Wno-error=unused-function
-%define	major	1
+%define	major	2
 %define	libname	%mklibname %{name} %{major}
 %define	devname	%mklibname %{name} -d
 
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
-Version:	1.1.1
+Version:	2.0.1
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -13,14 +13,18 @@ Url:		http://opencolorio.org/
 # Github archive was generated on the fly using the following URL:
 # https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch0:		OpenColorIO-1.1.0-compile.patch
+#Patch0:		OpenColorIO-1.1.0-compile.patch
 #from mageia
-#Patch3:		opencolorio-1.0.9-documentation-gen.patch
-#Patch4:		opencolorio-1.0.9-remove-external-doc-utilities.patch
+#Patch0:		opencolorio-2.0.1-fix-install.patch
+Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	git-core
+BuildRequires:	cmake(pybind11)
+BuildRequires:	cmake(pystring)
+BuildRequires:	pkgconfig(python)
+BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(glut)
@@ -30,6 +34,8 @@ BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python-sphinx
+BuildRequires:	pkgconfig(IlmBase)
+
 # FIXME this is a workaround for incompatibility with current glew and
 # glext.h -- should really be a BuildRequires, the BuildConflict works
 # around the problem by disabling some optional components.
@@ -70,6 +76,11 @@ Development files for %{name} library.
 rm -f ext/lcms*
 rm -f ext/tinyxml*
 rm -f ext/yaml*
+rm -f ext/dist
+
+%ifarch x86_64 znver1 aarch64
+sed -i 's|DESTINATION lib|DESTINATION %_lib|' src/OpenColorIO/CMakeLists.txt
+%endif
 
 %build
 %cmake \
@@ -86,6 +97,8 @@ rm -f ext/yaml*
 %ifnarch %{x86_64}
 	-DOCIO_USE_SSE=OFF \
 %endif
+	-DOCIO_USE_GLVND=ON \
+	-DOpenGL_GL_PREFERENCE=GLVND \
 	-G Ninja
 
 PYTHONDONTWRITEBYTECODE= %ninja_build
@@ -99,7 +112,7 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 
 
 %files
-%doc ChangeLog LICENSE README.md
+%doc LICENSE README.md
 %{_bindir}/*
 %{python_sitearch}/Py%{name}.so
 %{_datadir}/ocio
@@ -111,5 +124,5 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
-%{_includedir}/Py%{name}
-%{_datadir}/cmake/Modules/*
+#{_includedir}/Py%{name}
+#{_datadir}/cmake/Modules/*

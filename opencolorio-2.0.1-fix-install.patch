@@ -1,0 +1,13 @@
+diff -uraN OpenColorIO-2.0.1/src/OpenColorIO/CMakeLists.txt omv-OpenColorIO-2.0.1/src/OpenColorIO/CMakeLists.txt
+--- OpenColorIO-2.0.1/src/OpenColorIO/CMakeLists.txt	2021-05-04 06:36:34.000000000 +0200
++++ omv-OpenColorIO-2.0.1/src/OpenColorIO/CMakeLists.txt	2021-07-21 02:30:23.198807872 +0200
+@@ -279,7 +279,7 @@
+ endif()
+ 
+ install(TARGETS OpenColorIO
+-	LIBRARY DESTINATION lib
++	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ 	RUNTIME DESTINATION bin
+-	ARCHIVE DESTINATION lib
++	ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+ )
