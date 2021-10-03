@@ -124,5 +124,4 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
-#{_includedir}/Py%{name}
-#{_datadir}/cmake/Modules/*
+%{_datadir}/cmake/Modules/
