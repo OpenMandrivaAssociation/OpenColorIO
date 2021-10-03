@@ -5,7 +5,7 @@
 
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
-Version:	2.0.1
+Version:	2.0.2
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -124,5 +124,4 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
-#{_includedir}/Py%{name}
-#{_datadir}/cmake/Modules/*
+%{_datadir}/cmake/Modules/
