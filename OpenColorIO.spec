@@ -5,7 +5,7 @@
 
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
-Version:	2.0.2
+Version:	2.1.1
 Release:	1
 Group:		System/Libraries
 License:	BSD
@@ -34,12 +34,12 @@ BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python-sphinx
-BuildRequires:	pkgconfig(IlmBase)
+BuildRequires:	pkgconfig(Imath)
 
 # FIXME this is a workaround for incompatibility with current glew and
 # glext.h -- should really be a BuildRequires, the BuildConflict works
 # around the problem by disabling some optional components.
-BuildConflicts:	pkgconfig(glew)
+#BuildConflicts:	pkgconfig(glew)
 
 #######################
 # Unbundled libraries #
@@ -123,5 +123,6 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %files -n %{devname}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/libOpenColorIOoglapphelpers.a
 %{_includedir}/%{name}
 %{_datadir}/cmake/Modules/
