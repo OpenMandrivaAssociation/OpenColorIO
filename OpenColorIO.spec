@@ -123,6 +123,6 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %files -n %{devname}
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
-%{_libdir}/libOpenColorIOoglapphelpers.a
+%{_libdir}/*.a
 %{_includedir}/%{name}
 %{_datadir}/cmake/Modules/
