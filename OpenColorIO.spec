@@ -17,6 +17,8 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive
 #from mageia
 #Patch0:		opencolorio-2.0.1-fix-install.patch
 Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
+# (upstream)
+Patch2:		OpenColorIO-2.1.1-add-missing-include.patch
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
