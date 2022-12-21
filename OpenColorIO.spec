@@ -71,7 +71,7 @@ Development files for %{name} library.
 rm -f ext/lcms*
 rm -f ext/tinyxml*
 rm -f ext/yaml*
-rm -f ext/dist
+rm -f ext/dist*
 
 %ifarch x86_64 znver1 aarch64
 sed -i 's|DESTINATION lib|DESTINATION %_lib|' src/OpenColorIO/CMakeLists.txt
