@@ -10,15 +10,8 @@ Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://opencolorio.org/
-# Github archive was generated on the fly using the following URL:
-# https://github.com/imageworks/OpenColorIO/tarball/v1.0.9
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}/%{name}-%{version}.tar.gz
-#Patch0:		OpenColorIO-1.1.0-compile.patch
-#from mageia
-#Patch0:		opencolorio-2.0.1-fix-install.patch
-Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
-# (upstream)
-Patch2:		OpenColorIO-2.1.1-add-missing-include.patch
+Patch0:		opencolorio-2.0.1-armh-multiple-definition.patch
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
