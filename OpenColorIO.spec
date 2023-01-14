@@ -18,6 +18,8 @@ BuildRequires:	cmake ninja
 BuildRequires:	git-core
 BuildRequires:	cmake(pybind11)
 BuildRequires:	cmake(pystring)
+BuildRequires:	pkgconfig(minizip)
+BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(python)
 BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gl)
