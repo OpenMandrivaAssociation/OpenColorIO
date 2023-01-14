@@ -79,6 +79,9 @@ rm -f ext/dist/*
 sed -i 's|DESTINATION lib|DESTINATION %_lib|' src/OpenColorIO/CMakeLists.txt
 %endif
 
+# Fedora maps minzip-ng back to minizip so work around it here:
+sed -i "s/minizip-ng/minizip/g" src/OpenColorIO/OCIOZArchive.cpp src/apps/ocioarchive/main.cpp
+
 %build
 %cmake \
 	-DCMAKE_SKIP_RPATH=TRUE \
