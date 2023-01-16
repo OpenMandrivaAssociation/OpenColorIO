@@ -1,8 +1,8 @@
-diff -up OpenColorIO-2.1.1/src/OpenColorIO/Config.cpp.1~ OpenColorIO-2.1.1/src/OpenColorIO/Config.cpp
---- OpenColorIO-2.1.1/src/OpenColorIO/Config.cpp.1~	2022-01-24 17:14:42.903777461 +0100
-+++ OpenColorIO-2.1.1/src/OpenColorIO/Config.cpp	2022-01-24 17:38:45.002158592 +0100
-@@ -1070,12 +1070,6 @@ public:
- 
+diff -up OpenColorIO-2.2.1/src/OpenColorIO/Config.cpp.1~ OpenColorIO-2.2.1/src/OpenColorIO/Config.cpp
+--- OpenColorIO-2.2.1/src/OpenColorIO/Config.cpp.1~	2023-01-15 13:03:07.008728948 +0100
++++ OpenColorIO-2.2.1/src/OpenColorIO/Config.cpp	2023-01-15 13:05:31.369604175 +0100
+@@ -1504,12 +1504,6 @@ public:
+     }
  };
  
 -
