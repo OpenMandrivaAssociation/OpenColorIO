@@ -27,13 +27,15 @@ BuildRequires:	pkgconfig(expat)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(glu)
 BuildRequires:	pkgconfig(glut)
-BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python-sphinx
-BuildRequires:	pkgconfig(Imath)
+BuildRequires:	pkgconfig(OpenImageIO)
+BuildRequires:	pkgconfig(OpenEXR)
+BuildRequires:	pkgconfig(minizip)
+BuildRequires:	pkgconfig(glew)
 
 # FIXME this is a workaround for incompatibility with current glew and
 # glext.h -- should really be a BuildRequires, the BuildConflict works
