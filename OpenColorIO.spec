@@ -3,6 +3,8 @@
 %define	libname	%mklibname %{name}
 %define	devname	%mklibname %{name} -d
 
+%global __requires_exclude ^cmake\\(minizip-ng\\)
+
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
 Version:	2.2.1
