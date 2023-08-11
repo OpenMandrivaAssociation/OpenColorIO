@@ -19,6 +19,8 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive
 Patch0:		OpenColorIO-zlib-ng.patch
 Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
 Patch2:		OpenColorIO-2.2.1-minizip-ng-4.0.patch
+# Upstream's attempt to locate yaml-cpp doesn't work with 0.8
+Patch3:		ocio-find-yaml-cpp.patch
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
@@ -83,9 +85,12 @@ rm -f ext/tinyxml*
 rm -f ext/yaml*
 rm -f ext/dist
 
-%ifarch x86_64 znver1 aarch64
+%if "%{_lib}" != "lib"
 sed -i 's|DESTINATION lib|DESTINATION %_lib|' src/OpenColorIO/CMakeLists.txt
 %endif
+
+# Let's debug cmake failures instead of just getting weird errors...
+find . -name "CMakeLists.txt" -o -name "*.cmake" |xargs sed -i -e 's, QUIET,,'
 
 %build
 %cmake \

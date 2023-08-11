@@ -1,0 +1,14 @@
+diff -up OpenColorIO-2.2.1/share/cmake/modules/FindExtPackages.cmake.omv~ OpenColorIO-2.2.1/share/cmake/modules/FindExtPackages.cmake
+--- OpenColorIO-2.2.1/share/cmake/modules/FindExtPackages.cmake.omv~	2023-08-11 14:52:07.869139190 +0200
++++ OpenColorIO-2.2.1/share/cmake/modules/FindExtPackages.cmake	2023-08-11 14:57:06.533395920 +0200
+@@ -41,7 +41,9 @@ find_package(expat 2.4.1 REQUIRED)
+ 
+ # yaml-cpp
+ # https://github.com/jbeder/yaml-cpp
+-find_package(yaml-cpp 0.7.0 REQUIRED)
++#find_package(yaml-cpp 0.7.0 REQUIRED)
++pkg_check_modules(PC_yaml-cpp "yaml-cpp>=${yaml-cpp_FIND_VERSION}")
++set(_yaml-cpp_LIB_NAMES yaml-cpp)
+ 
+ # pystring
+ # https://github.com/imageworks/pystring
