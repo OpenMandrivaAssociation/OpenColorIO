@@ -20,7 +20,7 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive
 Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
 #Patch2:		OpenColorIO-2.2.1-minizip-ng-4.0.patch
 # Upstream's attempt to locate yaml-cpp doesn't work with 0.8
-Patch3:		ocio-find-yaml-cpp.patch
+#Patch3:		ocio-find-yaml-cpp.patch
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
