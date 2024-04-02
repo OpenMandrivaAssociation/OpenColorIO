@@ -37,7 +37,7 @@ BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python-sphinx
-BuildRequires:	pkgconfig(OpenImageIO)
+#BuildRequires:	pkgconfig(OpenImageIO)
 BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(minizip)
 BuildRequires:	pkgconfig(glew)
