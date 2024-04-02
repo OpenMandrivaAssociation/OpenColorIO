@@ -8,10 +8,10 @@
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
 Version:	2.2.1
-Release:	8
+Release:	9
 Group:		System/Libraries
 License:	BSD
-Url:		http://opencolorio.org/
+Url:		https://opencolorio.org/
 Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/v%{version}/%{name}-%{version}.tar.gz
 #Patch0:		OpenColorIO-1.1.0-compile.patch
 #from mageia
