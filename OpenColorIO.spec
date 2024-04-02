@@ -8,7 +8,7 @@
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
 Version:	2.2.1
-Release:	9
+Release:	10
 Group:		System/Libraries
 License:	BSD
 Url:		https://opencolorio.org/
@@ -37,7 +37,7 @@ BuildRequires:	pkgconfig(xmu)
 BuildRequires:	pkgconfig(xi)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	python-sphinx
-#BuildRequires:	pkgconfig(OpenImageIO)
+BuildRequires:	pkgconfig(OpenImageIO)
 BuildRequires:	pkgconfig(OpenEXR)
 BuildRequires:	pkgconfig(minizip)
 BuildRequires:	pkgconfig(glew)
