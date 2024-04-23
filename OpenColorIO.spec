@@ -7,8 +7,8 @@
 
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
-Version:	2.2.1
-Release:	10
+Version:	2.3.2
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://opencolorio.org/
@@ -16,11 +16,11 @@ Source0:        https://github.com/AcademySoftwareFoundation/OpenColorIO/archive
 #Patch0:		OpenColorIO-1.1.0-compile.patch
 #from mageia
 #Patch0:		opencolorio-2.0.1-fix-install.patch
-Patch0:		OpenColorIO-zlib-ng.patch
+#Patch0:		OpenColorIO-zlib-ng.patch
 Patch1:		opencolorio-2.0.1-armh-multiple-definition.patch
-Patch2:		OpenColorIO-2.2.1-minizip-ng-4.0.patch
+#Patch2:		OpenColorIO-2.2.1-minizip-ng-4.0.patch
 # Upstream's attempt to locate yaml-cpp doesn't work with 0.8
-Patch3:		ocio-find-yaml-cpp.patch
+#Patch3:		ocio-find-yaml-cpp.patch
 
 BuildRequires:	boost-devel
 BuildRequires:	cmake ninja
@@ -124,7 +124,7 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %files
 %doc LICENSE README.md
 %{_bindir}/*
-%{python_sitearch}/Py%{name}.so
+%{python_sitearch}/Py%{name}
 %{_datadir}/ocio
 
 %files -n %{libname}
