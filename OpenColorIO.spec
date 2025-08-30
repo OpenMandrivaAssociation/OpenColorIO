@@ -8,7 +8,7 @@
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
 Version:	2.4.2
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	BSD
 Url:		https://opencolorio.org/
@@ -117,8 +117,8 @@ PYTHONDONTWRITEBYTECODE= %ninja_build
 %ninja_install -C build
 
 # Fix location of cmake files.
-mkdir -p %{buildroot}%{_datadir}/cmake/Modules
-find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modules/ \;
+mkdir -p %{buildroot}%{_libdir}/cmake/OpenColorIO
+find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_libdir}/Modules/OpenColorIO/ \;
 
 
 %files
@@ -135,4 +135,4 @@ find %{buildroot} -name "*.cmake" -exec mv {} %{buildroot}%{_datadir}/cmake/Modu
 %{_libdir}/lib*helpers.a
 %{_libdir}/pkgconfig/%{name}.pc
 %{_includedir}/%{name}
-%{_datadir}/cmake/Modules/
+%{_libdir}/cmake/OpenColorIO
