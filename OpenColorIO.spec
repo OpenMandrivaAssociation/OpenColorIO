@@ -8,7 +8,7 @@
 Summary:	Enables color transforms and image display across graphics apps
 Name:		OpenColorIO
 Version:	2.5.0
-Release:	2
+Release:	3
 Group:		System/Libraries
 License:	BSD
 Url:		https://opencolorio.org/
